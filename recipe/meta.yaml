@@ -12,21 +12,22 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - flit-core >=2,<4
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
     - SPQR
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
